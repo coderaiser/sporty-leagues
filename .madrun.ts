@@ -10,6 +10,6 @@ export default {
     'lint': () => 'putout .',
     'fix:lint': () => run('lint', '--fix'),
     'test': () => [env, 'vitest'],
-    'coverage': () => [env, cutEnv('test', 'run --coverage')],
+    'coverage': async () => [env, await cutEnv('test', 'run --coverage')],
     'preview': () => 'vite preview',
 };
