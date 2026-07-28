@@ -37,7 +37,7 @@ export const BadgeModal = ({id, leagueName, onClose}: BadgeModalProps) => {
     useEffect(() => {
         if (id)
             fetch(id);
-    }, [id]);
+    }, [id, fetch]);
     
     return (
         <Modal open={!!id} onClose={onClose}>
