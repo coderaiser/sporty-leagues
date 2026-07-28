@@ -1,0 +1,31 @@
+name: Deploy React app
+on:
+  push:
+    tags:
+      - v*
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      BASE: /sporty-leagues
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 26
+      - name: Install
+        run: bun i
+      - name: Build
+        run: bun run build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
