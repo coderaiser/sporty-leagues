@@ -7,8 +7,7 @@ import tseslint from 'typescript-eslint';
 import {defineConfig, globalIgnores} from 'eslint/config';
 
 export default defineConfig(safeAlign, [
-    globalIgnores(['dist']),
-    {
+    globalIgnores(['dist']), {
         files: ['**/*.{ts,tsx}'],
         extends: [
             js.configs.recommended,
@@ -21,4 +20,3 @@ export default defineConfig(safeAlign, [
         },
     },
 ]);
-
