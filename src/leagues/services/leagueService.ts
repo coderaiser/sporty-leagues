@@ -23,4 +23,3 @@ export const fetchLeagues = async (): Promise<League[]> => {
     
     return leagues;
 };
-
