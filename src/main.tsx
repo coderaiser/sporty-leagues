@@ -11,6 +11,9 @@ import App from './App.tsx';
 const theme = createTheme({
     palette: {
         mode: 'dark',
+        primary: {
+            main: '#e53935',
+        },
     },
 });
 

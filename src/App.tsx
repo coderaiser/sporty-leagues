@@ -55,8 +55,8 @@ const App = () => {
         >
             <Typography
                 variant="h4"
+                color="primary"
                 sx={{
-                    color: '#e53935',
                     mb: 3,
                 }}
             >

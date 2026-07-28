@@ -21,7 +21,8 @@ export const LeagueCard = ({league, onClick}: LeagueCardProps) => {
         <Card
             sx={{
                 cursor: 'pointer',
-                borderLeft: '3px solid #e53935',
+                borderLeft: '3px solid',
+                borderColor: 'primary.main',
             }}
             onClick={() => onClick(idLeague)}
         >
