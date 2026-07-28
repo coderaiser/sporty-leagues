@@ -20,9 +20,11 @@ const boxSx = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     bgcolor: 'background.paper',
-    borderRadius: 2,
-    p: 4,
-    minWidth: 280,
+    borderRadius: {xs: 0, sm: 2},
+    p: {xs: 2, sm: 4},
+    width: {xs: '100vw', sm: 'auto'},
+    minWidth: {sm: 280},
+    minHeight: {xs: '100dvh', sm: 'auto'},
     textAlign: 'center',
 };
 
