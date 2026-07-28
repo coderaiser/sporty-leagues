@@ -5,7 +5,7 @@
 [CoverageURL]: https://coveralls.io/github/coderaiser/sporty-leagues?branch=master
 [CoverageIMGURL]: https://coveralls.io/repos/coderaiser/sporty-leagues/badge.svg?branch=master&service=github
 
-<img width="1110" height="477" alt="image" src="https://github.com/user-attachments/assets/b0465af9-b6fc-4a1c-8884-716e24641ae6" />
+<img width="1115" height="425" alt="image" src="https://github.com/user-attachments/assets/e5429045-1089-414a-85e9-879ba0ae31ae" />
 
 ## Install
 
