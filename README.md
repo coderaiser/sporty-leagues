@@ -40,7 +40,6 @@ bun start:prod
 
 ```ts
 const filteredLeagues = filterLeagues(leagues, [
-    createSearchFilter(search),
     createSportFilter(sport),
 ]);
 
