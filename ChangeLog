@@ -1,0 +1,10 @@
+2026.07.29, v1.0.1
+
+feature:
+- 73af8db index: update title to Sporty Leagues and add trophy favicon
+- 9b6d197 clear filters: add ClearFilters component and clearFilters/isFiltered to useFilters
+- ce4eb11 SportFilter: league count per sport in dropdown
+- a9ea26b modal: full-screen on mobile with responsive borderRadius, padding and dimensions
+- 60d98e4 toolbar: responsive Stack direction and fullWidth FormControl on mobile
+- 67bd10f theme: add primary accent color, remove inline color from App and LeagueCard
+- 60816aa filter-leagues: export normalizeLeague, createSearchFilter, createSportFilter, applyFilters and add 9 tests
