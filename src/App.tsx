@@ -36,10 +36,12 @@ const App = () => {
     } = useModal();
     
     const sports = [...new Set(leagues.map((l) => l.strSport))].sort();
+    
     const sportCounts = leagues.reduce<Record<string, number>>((acc, l) => {
         acc[l.strSport] = (acc[l.strSport] ?? 0) + 1;
         return acc;
     }, {});
+    
     const selectedLeague = leagues.find((l) => l.idLeague === selectedId);
     
     if (loading)
@@ -70,7 +72,10 @@ const App = () => {
                 Sporty Leagues
             </Typography>
             <Stack
-                direction={{xs: 'column', sm: 'row'}}
+                direction={{
+                    xs: 'column',
+                    sm: 'row',
+                }}
                 spacing={2}
                 sx={{
                     mb: 3,
