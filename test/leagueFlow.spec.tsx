@@ -31,9 +31,7 @@ describe('league flow', () => {
         await waitFor(() => screen.getByText('NBA'));
         
         await userEvent.click(screen.getByRole('combobox'));
-        await userEvent.click(await screen.findByText('Basketball', {
-            selector: 'li',
-        }));
+        await userEvent.click(screen.getByText('Basketball (1)'));
         expect(screen.getByText('NBA')).toBeInTheDocument();
         expect(screen.queryByText('English Premier League')).not.toBeInTheDocument();
     });
