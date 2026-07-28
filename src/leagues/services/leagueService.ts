@@ -1,10 +1,9 @@
 import type {League} from '../types';
+import {endpoints} from '../../shared/api/endpoints';
 
 const cache = new Map<string, League[]>();
 
 export const clearLeagueCache = () => cache.clear();
-
-export const URL = 'https://www.thesportsdb.com/api/v1/json/3/all_leagues.php';
 
 export const fetchLeagues = async (): Promise<League[]> => {
     const key = 'leagues';
@@ -12,7 +11,7 @@ export const fetchLeagues = async (): Promise<League[]> => {
     if (cache.has(key))
         return cache.get(key)!;
     
-    const response = await fetch(URL);
+    const response = await fetch(endpoints.leagues);
     
     if (!response.ok)
         throw Error('Failed to fetch leagues');
@@ -24,3 +23,4 @@ export const fetchLeagues = async (): Promise<League[]> => {
     
     return leagues;
 };
+
