@@ -1,9 +1,10 @@
 import {useState} from 'react';
 import type {League} from '../../leagues/types';
-import {filterLeagues, type LeagueFilter} from '../engines/filter-leagues.ts';
-
-const returns = <T>(a: T) => () => a;
-const success = returns<boolean>(true);
+import {
+    filterLeagues,
+    createSearchFilter,
+    createSportFilter,
+} from '../engines/filter-leagues.ts';
 
 interface UseFiltersResult {
     search: string;
@@ -29,20 +30,4 @@ export const useFilters = (leagues: League[]): UseFiltersResult => {
         setSport,
         filteredLeagues,
     };
-};
-
-const createSearchFilter = (search: string): LeagueFilter => {
-    const query = search.toLowerCase();
-    
-    if (!query)
-        return success;
-    
-    return (league) => league.searchText.includes(query);
-};
-
-const createSportFilter = (sport: string): LeagueFilter => {
-    if (!sport)
-        return success;
-    
-    return (league) => league.sport === sport;
 };

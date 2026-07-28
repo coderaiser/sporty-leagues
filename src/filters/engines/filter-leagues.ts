@@ -15,7 +15,7 @@ export const filterLeagues = (leagues: League[], filters: LeagueFilter[]) => {
     return applyFilters(normalizedLeagues, filters).map(getLeagueFromMap(leagueMap));
 };
 
-const normalizeLeague = (league: League): NormalizedLeague => {
+export const normalizeLeague = (league: League): NormalizedLeague => {
     const {
         idLeague,
         strSport,
@@ -50,6 +50,25 @@ const createLeagueMap = (leagues: League[]): Map<string, League> => {
 };
 
 const getLeagueFromMap = (leagueMap: Map<string, League>) => (league: NormalizedLeague): League => leagueMap.get(league.id)!;
+
+export const createSearchFilter = (search: string): LeagueFilter => {
+    const query = search.toLowerCase();
+    
+    if (!query)
+        return success;
+    
+    return (league) => league.searchText.includes(query);
+};
+
+export const createSportFilter = (sport: string): LeagueFilter => {
+    if (!sport)
+        return success;
+    
+    return (league) => league.sport === sport;
+};
+
+const returns = <T>(a: T) => () => a;
+const success = returns<boolean>(true);
 
 export const applyFilters = (leagues: NormalizedLeague[], filters: LeagueFilter[]): NormalizedLeague[] => {
     const result: NormalizedLeague[] = [];

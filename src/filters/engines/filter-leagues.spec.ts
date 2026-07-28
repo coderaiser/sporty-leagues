@@ -1,8 +1,11 @@
-import {filterLeagues, type LeagueFilter} from './filter-leagues.ts';
+import {
+    filterLeagues,
+    normalizeLeague,
+    createSearchFilter,
+    createSportFilter,
+    applyFilters,
+} from './filter-leagues.ts';
 import type {League} from '../../leagues/types';
-
-const returns = <T>(a: T) => () => a;
-const success = returns<boolean>(true);
 
 const leagues: League[] = [{
     idLeague: '4328',
@@ -26,6 +29,80 @@ const leagues: League[] = [{
     strLeagueAlternate: 'F1',
 }];
 
+const singleLeague: League = leagues[0];
+
+describe('normalizeLeague', () => {
+    it('joins strLeague and strLeagueAlternate into lowercase searchText', () => {
+        const result = normalizeLeague(singleLeague);
+        
+        expect(result.searchText).toBe('english premier league epl');
+    });
+    
+    it('maps idLeague to id field', () => {
+        const result = normalizeLeague(singleLeague);
+        
+        expect(result.id).toBe('4328');
+    });
+});
+
+describe('createSearchFilter', () => {
+    it('returns true when query matches searchText', () => {
+        const normalized = normalizeLeague(singleLeague);
+        const filter = createSearchFilter('Premier');
+        
+        expect(filter(normalized)).toBe(true);
+    });
+    
+    it('returns false when query does not match', () => {
+        const normalized = normalizeLeague(singleLeague);
+        const filter = createSearchFilter('Baseball');
+        
+        expect(filter(normalized)).toBe(false);
+    });
+    
+    it('returns true for empty query', () => {
+        const normalized = normalizeLeague(singleLeague);
+        const filter = createSearchFilter('');
+        
+        expect(filter(normalized)).toBe(true);
+    });
+});
+
+describe('createSportFilter', () => {
+    it('returns true when sport matches', () => {
+        const normalized = normalizeLeague(singleLeague);
+        const filter = createSportFilter('Soccer');
+        
+        expect(filter(normalized)).toBe(true);
+    });
+    
+    it('returns false when sport does not match', () => {
+        const normalized = normalizeLeague(singleLeague);
+        const filter = createSportFilter('Basketball');
+        
+        expect(filter(normalized)).toBe(false);
+    });
+    
+    it('returns true for empty sport', () => {
+        const normalized = normalizeLeague(singleLeague);
+        const filter = createSportFilter('');
+        
+        expect(filter(normalized)).toBe(true);
+    });
+});
+
+describe('applyFilters', () => {
+    it('returns empty array when one filter fails', () => {
+        const normalized = leagues.map(normalizeLeague);
+        const result = applyFilters(normalized, [
+            createSearchFilter('Premier'),
+            createSportFilter('Basketball'),
+        ]);
+        
+        expect(result).toEqual([]);
+    });
+});
+
 describe('filterLeagues', () => {
     it('filters', () => {
         const result = filterLeagues(leagues, []);
@@ -33,14 +110,7 @@ describe('filterLeagues', () => {
         expect(result).toEqual(leagues);
     });
     
-    it('with filters ', () => {
-        const createSportFilter = (sport: string): LeagueFilter => {
-            if (!sport)
-                return success;
-            
-            return (league) => league.sport === sport;
-        };
-        
+    it('with filters', () => {
         const result = filterLeagues(leagues, [
             createSportFilter('Soccer'),
         ]);
