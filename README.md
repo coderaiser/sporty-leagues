@@ -39,10 +39,6 @@ bun start:prod
 **Filter pipeline** in `filter-leagues.ts` is designed to be extended, so adding fuzzy search, multi-select sport, or a country filter is one new function, no changes to existing code. Here is example:
 
 ```ts
-const filteredLeagues = filterLeagues(leagues, [
-    createSportFilter(sport),
-]);
-
 const createSportFilter = (sport: string): LeagueFilter => {
     if (!sport)
         return () => true;
@@ -50,6 +46,9 @@ const createSportFilter = (sport: string): LeagueFilter => {
     return (league) => league.sport === sport;
 };
 
+const filteredLeagues = filterLeagues(leagues, [
+    createSportFilter(sport),
+]);
 ```
 
 **Domain-driven structure**: code is grouped by what it does, not what type of file it is. `leagues/`, `badge/`, `filters/` each own their types, services, hooks, and components. New domains can be added without touching existing ones.
