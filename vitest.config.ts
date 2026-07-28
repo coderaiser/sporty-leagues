@@ -10,9 +10,7 @@ export default defineConfig({
         globals: true,
         setupFiles: ['./vitest.setup.ts'],
         coverage: {
-            exclude: [
-                'env.ts',
-            ],
+            exclude: ['env.ts'],
         },
     },
 });
