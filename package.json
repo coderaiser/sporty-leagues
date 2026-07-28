@@ -3,6 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "repository": {
+    "url": "git+https://github.com/coderaiser/sporty-leagues"
+  },
   "scripts": {
     "start": "madrun start",
     "start:dev": "madrun start:dev",
