@@ -1,4 +1,5 @@
 import {http, HttpResponse} from 'msw';
+import {vi} from 'vitest';
 import {server} from '../../mocks/server.ts';
 import {
     fetchBadge,
@@ -65,5 +66,11 @@ describe('fetchBadge', () => {
         const badge = await fetchBadge('4328');
         
         expect(badge).toBeNull();
+    });
+    
+    it('throws when response is not ok', async () => {
+        server.use(http.get(endpoints.seasons, () => new HttpResponse(null, {status: 500})));
+        
+        await expect(fetchBadge('4328')).rejects.toThrow();
     });
 });

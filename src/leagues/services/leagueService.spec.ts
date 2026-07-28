@@ -1,4 +1,5 @@
 import {http, HttpResponse} from 'msw';
+import {vi} from 'vitest';
 import {server} from '../../mocks/server';
 import {
     fetchLeagues,
@@ -43,5 +44,11 @@ describe('fetchLeagues', () => {
         const leagues = await fetchLeagues();
         
         expect(leagues).toEqual([]);
+    });
+    
+    it('throws when response is not ok', async () => {
+        server.use(http.get(endpoints.leagues, () => new HttpResponse(null, {status: 500})));
+        
+        await expect(fetchLeagues()).rejects.toThrow();
     });
 });
