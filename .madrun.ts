@@ -8,6 +8,7 @@ export default {
     'start': () => 'vite',
     'start:prod': () => 'serve dist',
     'build': () => 'tsc -b && vite build',
+    'report': () => 'c8 report --reporter=lcov',
     'lint': () => 'putout .',
     'fix:lint': () => run('lint', '--fix'),
     'test': () => [env, 'vitest'],

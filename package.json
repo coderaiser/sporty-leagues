@@ -7,6 +7,7 @@
     "start": "madrun start",
     "start:prod": "madrun start:prod",
     "build": "madrun build",
+    "report": "madrun report",
     "lint": "madrun lint",
     "fix:lint": "madrun fix:lint",
     "test": "madrun test",
