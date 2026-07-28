@@ -1,4 +1,4 @@
 export interface Season {
-    strSeason: string
-    strBadge: string | null
+    strSeason: string;
+    strBadge: string | null;
 }

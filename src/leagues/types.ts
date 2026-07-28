@@ -1,6 +1,6 @@
 export interface League {
-    idLeague: string
-    strLeague: string
-    strSport: string
-    strLeagueAlternate: string | null
+    idLeague: string;
+    strLeague: string;
+    strSport: string;
+    strLeagueAlternate: string | null;
 }
