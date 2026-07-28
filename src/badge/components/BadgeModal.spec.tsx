@@ -59,6 +59,7 @@ describe('BadgeModal', () => {
     
     it('calls onClose on close button click', async () => {
         const onClose = vi.fn();
+        
         render(
             <BadgeModal {...defaultProps} onClose={onClose}/>,
         );
@@ -70,6 +71,7 @@ describe('BadgeModal', () => {
     
     it('calls onClose on backdrop click', async () => {
         const onClose = vi.fn();
+        
         render(
             <BadgeModal {...defaultProps} onClose={onClose}/>,
         );

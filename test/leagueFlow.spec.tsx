@@ -57,4 +57,3 @@ describe('league flow', () => {
         })).toBeInTheDocument());
     });
 });
-

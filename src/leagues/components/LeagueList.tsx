@@ -17,12 +17,15 @@ export const LeagueList = ({leagues, onLeagueClick}: LeagueListProps) => {
     return (
         <Grid container spacing={2}>
             {leagues.map((league) => (
-                <Grid key={league.idLeague} size={{
-                    xs: 12,
-                    sm: 6,
-                    md: 4,
-                    lg: 3,
-                }}>
+                <Grid
+                    key={league.idLeague}
+                    size={{
+                        xs: 12,
+                        sm: 6,
+                        md: 4,
+                        lg: 3,
+                    }}
+                >
                     <LeagueCard league={league} onClick={onLeagueClick}/>
                 </Grid>
             ))}

@@ -53,15 +53,20 @@ export const BadgeModal = ({id, leagueName, onClose}: BadgeModalProps) => {
                 >
                     <CloseIcon/>
                 </IconButton>
-                <Typography variant="h6" sx={{
-                    mb: 2,
-                }}>{leagueName}</Typography>
+                <Typography
+                    variant="h6"
+                    sx={{
+                        mb: 2,
+                    }}
+                >{leagueName}</Typography>
                 {loading && <CircularProgress/>}
                 {!loading && error && <Typography>Unable to load badge</Typography>}
                 {!loading && !error && badge && <img src={badge} alt={`${leagueName} badge`}/>}
-                {!loading && !error && !badge && <EmojiEventsIcon sx={{
-                    fontSize: 64,
-                }}/>}
+                {!loading && !error && !badge && <EmojiEventsIcon
+                    sx={{
+                        fontSize: 64,
+                    }}
+                />}
             </Box>
         </Modal>
     );

@@ -17,6 +17,7 @@ const App = () => {
         loading,
         error,
     } = useLeagues();
+    
     const {
         search,
         setSearch,
@@ -24,6 +25,7 @@ const App = () => {
         setSport,
         filteredLeagues,
     } = useFilters(leagues);
+    
     const {
         selectedId,
         open,
@@ -34,17 +36,30 @@ const App = () => {
     const selectedLeague = leagues.find((l) => l.idLeague === selectedId);
     
     if (loading)
-        return <Spinner/>;
+        return (
+            <Spinner/>
+        );
     
     if (error)
-        return <ErrorPage message={error}/>;
+        return (
+            <ErrorPage message={error}/>
+        );
     
     return (
-        <Box sx={{bgcolor: '#121212', minHeight: '100vh', p: 3}}>
-            <Typography variant="h4" sx={{color: '#e53935', mb: 3}}>
+        <Box sx={{
+            bgcolor: '#121212',
+            minHeight: '100vh',
+            p: 3,
+        }}>
+            <Typography variant="h4" sx={{
+                color: '#e53935',
+                mb: 3,
+            }}>
                 Sporty Leagues
             </Typography>
-            <Stack direction="row" spacing={2} sx={{mb: 3}}>
+            <Stack direction="row" spacing={2} sx={{
+                mb: 3,
+            }}>
                 <SearchBar value={search} onChange={setSearch}/>
                 <SportFilter sports={sports} value={sport} onChange={setSport}/>
             </Stack>

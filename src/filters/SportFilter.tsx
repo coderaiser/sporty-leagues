@@ -4,9 +4,9 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
 interface SportFilterProps {
-    sports: string[]
-    value: string
-    onChange: (value: string) => void
+    sports: string[];
+    value: string;
+    onChange: (value: string) => void;
 }
 
 export const SportFilter = ({sports, value, onChange}: SportFilterProps) => (
@@ -14,18 +14,15 @@ export const SportFilter = ({sports, value, onChange}: SportFilterProps) => (
         <InputLabel id="sport-label">
             Sport
         </InputLabel>
-        
         <Select
             labelId="sport-label"
             label="Sport"
             value={value}
-            onChange={(event) => onChange(event.target.value)
-            }
+            onChange={(event) => onChange(event.target.value)}
         >
             <MenuItem value="">
                 All Sports
             </MenuItem>
-            
             {sports.map((sport) => (
                 <MenuItem
                     key={sport}

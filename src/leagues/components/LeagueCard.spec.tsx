@@ -36,26 +36,33 @@ describe('LeagueCard', () => {
     
     it('renders "—" when strLeagueAlternate is empty string', () => {
         render(
-            <LeagueCard league={{
-                ...league,
-                strLeagueAlternate: '',
-            }} onClick={noop}/>,
+            <LeagueCard
+                league={{
+                    ...league,
+                    strLeagueAlternate: '',
+                }}
+                onClick={noop}
+            />,
         );
         expect(screen.getByText('—')).toBeInTheDocument();
     });
     
     it('renders "—" when strLeagueAlternate is null', () => {
         render(
-            <LeagueCard league={{
-                ...league,
-                strLeagueAlternate: null,
-            }} onClick={noop}/>,
+            <LeagueCard
+                league={{
+                    ...league,
+                    strLeagueAlternate: null,
+                }}
+                onClick={noop}
+            />,
         );
         expect(screen.getByText('—')).toBeInTheDocument();
     });
     
     it('calls onClick with idLeague on click', async () => {
         const onClick = vi.fn();
+        
         render(
             <LeagueCard league={league} onClick={onClick}/>,
         );

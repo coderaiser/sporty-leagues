@@ -19,7 +19,10 @@ export const LeagueCard = ({league, onClick}: LeagueCardProps) => {
     
     return (
         <Card
-            sx={{cursor: 'pointer', borderLeft: '3px solid #e53935'}}
+            sx={{
+                cursor: 'pointer',
+                borderLeft: '3px solid #e53935',
+            }}
             onClick={() => onClick(idLeague)}
         >
             <CardActionArea>
