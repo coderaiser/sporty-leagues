@@ -1,9 +1,7 @@
 import {useState} from 'react';
 import {tryToCatch} from 'try-to-catch';
 import {fetchBadge} from '../services/badgeService';
-
-const isError = (a: unknown) => a instanceof Error;
-const parseError = (error: Error) => isError(error) ? error.message : 'Unknown error';
+import {parseError} from '../../shared/error.ts';
 
 interface UseBadgeResult {
     badge: string | null;

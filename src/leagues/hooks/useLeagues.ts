@@ -2,15 +2,13 @@ import {useEffect, useState} from 'react';
 import {tryToCatch} from 'try-to-catch';
 import {fetchLeagues} from '../services/leagueService';
 import type {League} from '../types';
+import {parseError} from '../../shared/error.ts';
 
 interface UseLeaguesResult {
     leagues: League[];
     loading: boolean;
     error: string | null;
 }
-
-const isError = (a: unknown) => a instanceof Error;
-const parseError = (error: Error) => isError(error) ? error.message : 'Unknown error';
 
 export const useLeagues = (): UseLeaguesResult => {
     const [leagues, setLeagues] = useState<League[]>([]);
