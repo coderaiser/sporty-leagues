@@ -33,7 +33,9 @@ describe('fetchLeagues', () => {
     });
     
     it('returns empty array when leagues is null in response', async () => {
-        server.use(http.get(URL, () => HttpResponse.json({leagues: null})));
+        server.use(http.get(URL, () => HttpResponse.json({
+            leagues: null,
+        })));
         
         const leagues = await fetchLeagues();
         

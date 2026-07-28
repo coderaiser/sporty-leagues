@@ -2,7 +2,7 @@
     "rules": {
         "tape": "off"
     },
-    "plugins":[
+    "plugins": [
         "react",
         "react-hooks"
     ]
