@@ -8,6 +8,7 @@ import {Spinner} from './shared/Spinner';
 import {ErrorPage} from './shared/ErrorPage';
 import {SearchBar} from './filters/SearchBar';
 import {SportFilter} from './filters/SportFilter';
+import {ClearFilters} from './filters/ClearFilters';
 import {LeagueList} from './leagues/components/LeagueList';
 import {BadgeModal} from './badge/components/BadgeModal';
 
@@ -24,6 +25,8 @@ const App = () => {
         sport,
         setSport,
         filteredLeagues,
+        clearFilters,
+        isFiltered,
     } = useFilters(leagues);
     
     const {
@@ -75,6 +78,7 @@ const App = () => {
             >
                 <SearchBar value={search} onChange={setSearch}/>
                 <SportFilter sports={sports} value={sport} onChange={setSport} sportCounts={sportCounts}/>
+                <ClearFilters visible={isFiltered} onClear={clearFilters}/>
             </Stack>
             <LeagueList leagues={filteredLeagues} onLeagueClick={open}/>
             <BadgeModal

@@ -66,6 +66,32 @@ describe('App', () => {
         expect(screen.getByRole('presentation')).toBeInTheDocument();
     });
     
+    it('clear filters button appears when search is active', async () => {
+        render(
+            <App/>,
+        );
+        await waitFor(() => screen.getByText('English Premier League'));
+        
+        const searchInput = screen.getByLabelText('Search leagues');
+        await userEvent.type(searchInput, 'Premier');
+        
+        expect(screen.getByText('Clear filters')).toBeInTheDocument();
+    });
+    
+    it('clear filters button resets filters when clicked', async () => {
+        const user = userEvent.setup();
+        
+        render(
+            <App/>,
+        );
+        await waitFor(() => screen.getByText('English Premier League'));
+        
+        await user.type(screen.getByLabelText('Search leagues'), 'Premier');
+        await user.click(screen.getByText('Clear filters'));
+        
+        expect(screen.getByLabelText('Search leagues')).toHaveValue('');
+    });
+    
     it('closes badge modal on close button click', async () => {
         render(
             <App/>,

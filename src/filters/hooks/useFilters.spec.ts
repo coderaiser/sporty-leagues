@@ -94,4 +94,62 @@ describe('useFilters', () => {
         
         expect(result.current.filteredLeagues).toEqual([]);
     });
+    
+    it('clearFilters resets search to empty', () => {
+        const {result} = renderHook(() => useFilters(leagues));
+        
+        act(() => {
+            result.current.setSearch('Premier');
+        });
+        
+        expect(result.current.search).toBe('Premier');
+        
+        act(() => {
+            result.current.clearFilters();
+        });
+        
+        expect(result.current.search).toBe('');
+    });
+    
+    it('clearFilters resets sport to empty', () => {
+        const {result} = renderHook(() => useFilters(leagues));
+        
+        act(() => {
+            result.current.setSport('Basketball');
+        });
+        
+        expect(result.current.sport).toBe('Basketball');
+        
+        act(() => {
+            result.current.clearFilters();
+        });
+        
+        expect(result.current.sport).toBe('');
+    });
+    
+    it('isFiltered is false when both are empty', () => {
+        const {result} = renderHook(() => useFilters(leagues));
+        
+        expect(result.current.isFiltered).toBe(false);
+    });
+    
+    it('isFiltered is true when search is set', () => {
+        const {result} = renderHook(() => useFilters(leagues));
+        
+        act(() => {
+            result.current.setSearch('Premier');
+        });
+        
+        expect(result.current.isFiltered).toBe(true);
+    });
+    
+    it('isFiltered is true when sport is set', () => {
+        const {result} = renderHook(() => useFilters(leagues));
+        
+        act(() => {
+            result.current.setSport('Basketball');
+        });
+        
+        expect(result.current.isFiltered).toBe(true);
+    });
 });

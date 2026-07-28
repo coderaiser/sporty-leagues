@@ -12,6 +12,8 @@ interface UseFiltersResult {
     sport: string;
     setSport: (value: string) => void;
     filteredLeagues: League[];
+    clearFilters: () => void;
+    isFiltered: boolean;
 }
 
 export const useFilters = (leagues: League[]): UseFiltersResult => {
@@ -23,11 +25,20 @@ export const useFilters = (leagues: League[]): UseFiltersResult => {
         createSportFilter(sport),
     ]);
     
+    const clearFilters = () => {
+        setSearch('');
+        setSport('');
+    };
+    
+    const isFiltered = !!(search || sport);
+    
     return {
         search,
         setSearch,
         sport,
         setSport,
         filteredLeagues,
+        clearFilters,
+        isFiltered,
     };
 };
