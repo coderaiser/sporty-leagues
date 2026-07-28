@@ -50,9 +50,7 @@ const createLeagueMap = (leagues: League[]): Map<string, League> => {
     return result;
 };
 
-const getLeagueFromMap = (leagueMap: Map<string, League>) => (league: NormalizedLeague): League => {
-    return leagueMap.get(league.id)!;
-};
+const getLeagueFromMap = (leagueMap: Map<string, League>) => (league: NormalizedLeague): League => leagueMap.get(league.id)!;
 
 const createSearchFilter = (search: string): LeagueFilter => {
     const query = search.toLowerCase();
@@ -113,4 +111,3 @@ export const useFilters = (leagues: League[]): UseFiltersResult => {
         filteredLeagues,
     };
 };
-
