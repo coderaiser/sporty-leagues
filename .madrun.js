@@ -5,7 +5,7 @@ const env = {
 }
 
 export default {
-    'dev': () => 'vite',
+    'start': () => 'vite',
     'build': () => 'tsc -b && vite build',
     'lint': () => 'putout .',
     'fix:lint': () => run('lint', '--fix'),

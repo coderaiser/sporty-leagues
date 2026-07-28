@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "madrun dev",
+    "start": "madrun start",
     "build": "madrun build",
     "lint": "madrun lint",
     "fix:lint": "madrun fix:lint",
@@ -33,6 +33,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.4",
     "@vitest/coverage-v8": "^4.1.10",
+    "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "^10.6.0",
     "eslint-plugin-putout": "^31.4.1",
     "eslint-plugin-react-hooks": "^7.1.1",
