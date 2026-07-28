@@ -59,6 +59,9 @@ const filteredLeagues = filterLeagues(leagues, [
 
 **Domain-driven structure**: code is grouped by what it does, not what type of file it is. `leagues/`, `badge/`, `filters/` each own their types, services, hooks, and components. New domains can be added without touching existing ones.
 
+**React 19 with the React Compiler enabled** - it automatically memoizes components, values, and callbacks at build time. That means no manual `useMemo`, `useCallback`, or `memo` calls needed. The compiler analyzes your code and inserts the optimizations itself.
+For this project specifically it means useFilters rerenders only when leagues, search, or sport actually change without us writing a single `useMemo`. Same for LeagueList — cards don't rerender when unrelated state changes, for free.
+
 Designed with careful planning and implementation with Claude Code.
 
 ## License
