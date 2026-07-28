@@ -29,10 +29,9 @@ describe('league flow', () => {
             <App/>,
         );
         await waitFor(() => screen.getByText('NBA'));
+        
         await userEvent.click(screen.getByRole('combobox'));
-        await userEvent.click(screen.getByRole('option', {
-            name: 'Basketball',
-        }));
+        await userEvent.click(await screen.findByText('Basketball', {selector: 'li'}));
         expect(screen.getByText('NBA')).toBeInTheDocument();
         expect(screen.queryByText('English Premier League')).not.toBeInTheDocument();
     });
