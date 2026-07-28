@@ -8,7 +8,7 @@ export default {
     'start': () => 'vite',
     'start:prod': () => 'serve dist',
     'build': () => 'tsc -b && vite build',
-    'report': () => 'c8 report --reporter=lcov',
+    'report': async () => [env, await cutEnv('coverage', '--coverage.reporter lcov')],
     'lint': () => 'putout .',
     'fix:lint': () => run('lint', '--fix'),
     'test': () => [env, 'vitest'],
