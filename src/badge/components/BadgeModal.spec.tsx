@@ -78,4 +78,14 @@ describe('BadgeModal', () => {
         await userEvent.click(document.querySelector('.MuiBackdrop-root')!);
         expect(onClose).toHaveBeenCalledOnce();
     });
+    
+    it('closes modal on Escape key press', async () => {
+        const onClose = vi.fn();
+        
+        render(
+            <BadgeModal {...defaultProps} onClose={onClose}/>,
+        );
+        await userEvent.keyboard('{Escape}');
+        expect(onClose).toHaveBeenCalledOnce();
+    });
 });
