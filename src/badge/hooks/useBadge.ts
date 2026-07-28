@@ -38,4 +38,3 @@ export const useBadge = (): UseBadgeResult => {
         fetch,
     };
 };
-

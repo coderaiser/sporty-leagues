@@ -1,7 +1,4 @@
-import {
-    renderHook,
-    act,
-} from '@testing-library/react';
+import {renderHook, act} from '@testing-library/react';
 import {http, HttpResponse} from 'msw';
 import {server} from '../../mocks/server';
 import {clearBadgeCache} from '../services/badgeService';
@@ -31,15 +28,11 @@ describe('useBadge', () => {
             await result.current.fetch('4328');
         });
         
-        expect(result.current.badge).toBe(
-            'https://example.com/badge.png',
-        );
+        expect(result.current.badge).toBe('https://example.com/badge.png');
     });
     
     it('sets error on fetch failure', async () => {
-        server.use(
-            http.get(endpoints.seasons, () => HttpResponse.error()),
-        );
+        server.use(http.get(endpoints.seasons, () => HttpResponse.error()));
         
         const {result} = renderHook(() => useBadge());
         
@@ -64,14 +57,12 @@ describe('useBadge', () => {
     });
     
     it('sets null badge when no season has a badge', async () => {
-        server.use(
-            http.get(endpoints.seasons, () => HttpResponse.json({
-                seasons: [{
-                    strSeason: '2020-2021',
-                    strBadge: null,
-                }],
-            })),
-        );
+        server.use(http.get(endpoints.seasons, () => HttpResponse.json({
+            seasons: [{
+                strSeason: '2020-2021',
+                strBadge: null,
+            }],
+        })));
         
         const {result} = renderHook(() => useBadge());
         
