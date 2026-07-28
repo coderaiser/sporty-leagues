@@ -6,8 +6,8 @@ import {
     vi,
 } from 'vitest';
 import {server} from './src/mocks/server';
-import {clearCache as clearLeagueCache} from './src/leagues/services/leagueService';
-import {clearCache as clearBadgeCache} from './src/badge/services/badgeService';
+import {clearLeagueCache} from './src/leagues/services/leagueService';
+import {clearBadgeCache} from './src/badge/services/badgeService';
 
 beforeAll(() => server.listen({
     onUnhandledRequest: 'error',

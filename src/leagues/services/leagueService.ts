@@ -2,7 +2,7 @@ import type {League} from '../types';
 
 const cache = new Map<string, League[]>();
 
-export const clearCache = () => cache.clear();
+export const clearLeagueCache = () => cache.clear();
 
 export const URL = 'https://www.thesportsdb.com/api/v1/json/3/all_leagues.php';
 

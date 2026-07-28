@@ -7,7 +7,7 @@ const buildURL = (id: string) => {
     return `${URL}&id=${id}`;
 };
 
-export const clearCache = () => cache.clear();
+export const clearBadgeCache = () => cache.clear();
 
 export const selectBadge = (seasons: Season[]): string | null => seasons.find((s) => s.strBadge !== null)?.strBadge ?? null;
 

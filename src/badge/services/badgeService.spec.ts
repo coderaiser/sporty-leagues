@@ -2,14 +2,14 @@ import {http, HttpResponse} from 'msw';
 import {server} from '../../mocks/server.ts';
 import {
     fetchBadge,
-    clearCache,
+    clearBadgeCache,
     selectBadge,
 } from './badgeService.ts';
 import {mockSeasons} from '../../mocks/fixtures.ts';
 
 const URL = 'https://www.thesportsdb.com/api/v1/json/3/search_all_seasons.php';
 
-beforeEach(() => clearCache());
+beforeEach(() => clearBadgeCache());
 
 describe('selectBadge', () => {
     it('returns first available badge', () => {
@@ -46,7 +46,7 @@ describe('fetchBadge', () => {
         const spy = vi.spyOn(globalThis, 'fetch');
         
         await fetchBadge('4328');
-        clearCache();
+        clearBadgeCache();
         await fetchBadge('4328');
         
         expect(spy).toHaveBeenCalledTimes(2);
