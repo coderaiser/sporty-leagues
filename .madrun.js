@@ -1,8 +1,8 @@
 import {run, cutEnv} from 'madrun';
 
 const env = {
-    NODE_OPTIONS:`"--no-experimental-webstorage"`,
-}
+    NODE_OPTIONS: `"--no-experimental-webstorage"`,
+};
 
 export default {
     'start': () => 'vite',

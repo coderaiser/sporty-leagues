@@ -2,6 +2,8 @@ import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {SportFilter} from './SportFilter';
 
+const noop = () => {};
+
 describe('SportFilter', () => {
     it('renders All Sports option', async () => {
         const user = userEvent.setup();
@@ -13,17 +15,13 @@ describe('SportFilter', () => {
                     'Basketball',
                 ]}
                 value=""
-                onChange={() => {}}
+                onChange={noop}
             />,
         );
         
-        await user.click(
-            screen.getByRole('combobox'),
-        );
+        await user.click(screen.getByRole('combobox'));
         
-        expect(
-            screen.getByText('All Sports'),
-        ).toBeInTheDocument();
+        expect(screen.getByText('All Sports')).toBeInTheDocument();
     });
     
     it('renders sport options', async () => {
@@ -36,17 +34,13 @@ describe('SportFilter', () => {
                     'Basketball',
                 ]}
                 value=""
-                onChange={() => {}}
+                onChange={noop}
             />,
         );
         
-        await user.click(
-            screen.getByRole('combobox'),
-        );
+        await user.click(screen.getByRole('combobox'));
         
-        expect(
-            screen.getByText('Soccer'),
-        ).toBeInTheDocument();
+        expect(screen.getByText('Soccer')).toBeInTheDocument();
     });
     
     it('calls onChange when sport changes', async () => {
@@ -68,9 +62,7 @@ describe('SportFilter', () => {
         
         await user.click(select);
         
-        await user.click(
-            screen.getByText('Basketball'),
-        );
+        await user.click(screen.getByText('Basketball'));
         
         expect(onChange).toHaveBeenCalledWith('Basketball');
     });

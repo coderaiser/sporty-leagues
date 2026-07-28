@@ -49,11 +49,7 @@ const createLeagueMap = (leagues: League[]): Map<string, League> => {
     return result;
 };
 
-const getLeagueFromMap = (leagueMap: Map<string, League>) => {
-    return (league: NormalizedLeague): League => {
-        return leagueMap.get(league.id)!;
-    };
-};
+const getLeagueFromMap = (leagueMap: Map<string, League>) => (league: NormalizedLeague): League => leagueMap.get(league.id)!;
 
 export const applyFilters = (leagues: NormalizedLeague[], filters: LeagueFilter[]): NormalizedLeague[] => {
     const result: NormalizedLeague[] = [];

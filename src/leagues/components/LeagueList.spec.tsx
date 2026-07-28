@@ -3,6 +3,8 @@ import userEvent from '@testing-library/user-event';
 import {LeagueList} from './LeagueList';
 import type {League} from '../types';
 
+const noop = () => {};
+
 const leagues: League[] = [{
     idLeague: '4328',
     strLeague: 'English Premier League',
@@ -20,30 +22,24 @@ describe('LeagueList', () => {
         render(
             <LeagueList
                 leagues={leagues}
-                onLeagueClick={() => {}}
+                onLeagueClick={noop}
             />,
         );
         
-        expect(
-            screen.getByText('English Premier League'),
-        ).toBeInTheDocument();
+        expect(screen.getByText('English Premier League')).toBeInTheDocument();
         
-        expect(
-            screen.getByText('NBA'),
-        ).toBeInTheDocument();
+        expect(screen.getByText('NBA')).toBeInTheDocument();
     });
     
     it('renders empty state when leagues is empty', () => {
         render(
             <LeagueList
                 leagues={[]}
-                onLeagueClick={() => {}}
+                onLeagueClick={noop}
             />,
         );
         
-        expect(
-            screen.getByText('No leagues found'),
-        ).toBeInTheDocument();
+        expect(screen.getByText('No leagues found')).toBeInTheDocument();
     });
     
     it('passes league id to onLeagueClick', async () => {
@@ -57,11 +53,8 @@ describe('LeagueList', () => {
             />,
         );
         
-        await user.click(
-            screen.getByText('English Premier League'),
-        );
+        await user.click(screen.getByText('English Premier League'));
         
-        expect(onLeagueClick)
-            .toHaveBeenCalledWith('4328');
+        expect(onLeagueClick).toHaveBeenCalledWith('4328');
     });
 });
