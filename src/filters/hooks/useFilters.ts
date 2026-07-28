@@ -1,16 +1,9 @@
 import {useState} from 'react';
 import type {League} from '../../leagues/types';
+import {filterLeagues, type LeagueFilter} from '../engines/filter-leagues.ts';
 
-const returns = (a: unknown) => () => a;
-const success = returns(true);
-
-interface NormalizedLeague {
-    id: string;
-    sport: string;
-    searchText: string;
-}
-
-type LeagueFilter = (league: NormalizedLeague) => boolean;
+const returns = <T>(a: T) => () => a;
+const success = returns<boolean>(true);
 
 interface UseFiltersResult {
     search: string;
@@ -20,37 +13,23 @@ interface UseFiltersResult {
     filteredLeagues: League[];
 }
 
-const normalizeLeague = (league: League): NormalizedLeague => {
-    const {
-        idLeague,
-        strSport,
-        strLeague,
-        strLeagueAlternate,
-    } = league;
+export const useFilters = (leagues: League[]): UseFiltersResult => {
+    const [search, setSearch] = useState('');
+    const [sport, setSport] = useState('');
+    
+    const filteredLeagues = filterLeagues(leagues, [
+        createSearchFilter(search),
+        createSportFilter(sport),
+    ]);
     
     return {
-        id: idLeague,
-        sport: strSport,
-        searchText: [
-            strLeague,
-            strLeagueAlternate || '',
-        ]
-            .join(' ')
-            .toLowerCase(),
+        search,
+        setSearch,
+        sport,
+        setSport,
+        filteredLeagues,
     };
 };
-
-const createLeagueMap = (leagues: League[]): Map<string, League> => {
-    const result = new Map<string, League>();
-    
-    for (const league of leagues) {
-        result.set(league.idLeague, league);
-    }
-    
-    return result;
-};
-
-const getLeagueFromMap = (leagueMap: Map<string, League>) => (league: NormalizedLeague): League => leagueMap.get(league.id)!;
 
 const createSearchFilter = (search: string): LeagueFilter => {
     const query = search.toLowerCase();
@@ -66,48 +45,4 @@ const createSportFilter = (sport: string): LeagueFilter => {
         return success;
     
     return (league) => league.sport === sport;
-};
-
-const applyFilters = (leagues: NormalizedLeague[], filters: LeagueFilter[]): NormalizedLeague[] => {
-    const result: NormalizedLeague[] = [];
-    
-    for (const league of leagues) {
-        let matches = true;
-        
-        for (const filter of filters) {
-            if (!filter(league)) {
-                matches = false;
-                break;
-            }
-        }
-        
-        if (matches)
-            result.push(league);
-    }
-    
-    return result;
-};
-
-export const useFilters = (leagues: League[]): UseFiltersResult => {
-    const [search, setSearch] = useState('');
-    const [sport, setSport] = useState('');
-    
-    const normalizedLeagues = leagues.map(normalizeLeague);
-    
-    const leagueMap = createLeagueMap(leagues);
-    
-    const filters: LeagueFilter[] = [
-        createSearchFilter(search),
-        createSportFilter(sport),
-    ];
-    
-    const filteredLeagues = applyFilters(normalizedLeagues, filters).map(getLeagueFromMap(leagueMap));
-    
-    return {
-        search,
-        setSearch,
-        sport,
-        setSport,
-        filteredLeagues,
-    };
 };
