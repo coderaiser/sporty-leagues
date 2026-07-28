@@ -20,11 +20,25 @@ const boxSx = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     bgcolor: 'background.paper',
-    borderRadius: {xs: 0, sm: 2},
-    p: {xs: 2, sm: 4},
-    width: {xs: '100vw', sm: 'auto'},
-    minWidth: {sm: 280},
-    minHeight: {xs: '100dvh', sm: 'auto'},
+    borderRadius: {
+        xs: 0,
+        sm: 2,
+    },
+    p: {
+        xs: 2,
+        sm: 4,
+    },
+    width: {
+        xs: '100vw',
+        sm: 'auto',
+    },
+    minWidth: {
+        sm: 280,
+    },
+    minHeight: {
+        xs: '100dvh',
+        sm: 'auto',
+    },
     textAlign: 'center',
 };
 
@@ -42,7 +56,7 @@ export const BadgeModal = ({id, leagueName, onClose}: BadgeModalProps) => {
     }, [id, fetch]);
     
     return (
-        <Modal open={!!id} onClose={onClose}>
+        <Modal open={Boolean(id)} onClose={onClose}>
             <Box sx={boxSx}>
                 <IconButton
                     aria-label="close"

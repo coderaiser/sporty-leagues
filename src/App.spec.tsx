@@ -12,7 +12,9 @@ import App from './App';
 const noop = () => {};
 
 const getSportDropdownItem = async (text: string) => {
-    await userEvent.setup().click(screen.getByLabelText('Sport'));
+    await userEvent
+        .setup()
+        .click(screen.getByLabelText('Sport'));
     return screen.getByText(text);
 };
 
@@ -46,6 +48,7 @@ describe('App', () => {
         );
         await waitFor(() => screen.getByText('English Premier League'));
         const item = await getSportDropdownItem('Soccer (2)');
+        
         expect(item).toBeInTheDocument();
     });
     
@@ -104,4 +107,3 @@ describe('App', () => {
         expect(screen.queryByRole('presentation')).not.toBeInTheDocument();
     });
 });
-

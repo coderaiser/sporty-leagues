@@ -30,7 +30,7 @@ export const useFilters = (leagues: League[]): UseFiltersResult => {
         setSport('');
     };
     
-    const isFiltered = !!(search || sport);
+    const isFiltered = Boolean(search || sport);
     
     return {
         search,

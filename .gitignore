@@ -6,7 +6,6 @@
 *.sln
 *.sw?
 *.swp
-*.lock
 
 .vscode/*
 .idea

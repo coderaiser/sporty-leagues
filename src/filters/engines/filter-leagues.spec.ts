@@ -29,7 +29,7 @@ const leagues: League[] = [{
     strLeagueAlternate: 'F1',
 }];
 
-const singleLeague: League = leagues[0];
+const [singleLeague] = leagues;
 
 describe('normalizeLeague', () => {
     it('joins strLeague and strLeagueAlternate into lowercase searchText', () => {

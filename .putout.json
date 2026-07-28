@@ -1,7 +1,8 @@
 {
     "rules": {
         "tape": "off",
-        "esm/remove-empty-import": "off"
+        "esm/remove-empty-import": "off",
+        "gitignore/add": "off"
     },
     "plugins": [
         "react",
