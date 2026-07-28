@@ -1,9 +1,9 @@
 import {useState} from 'react';
 
 interface UseModalResult {
-    selectedId: string | null
-    open: (id: string) => void
-    close: () => void
+    selectedId: string | null;
+    open: (id: string) => void;
+    close: () => void;
 }
 
 export const useModal = (): UseModalResult => {
