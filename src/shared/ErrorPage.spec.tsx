@@ -3,20 +3,20 @@ import {ErrorPage} from './ErrorPage';
 
 describe('ErrorPage', () => {
     it('renders heading', () => {
-        render(<ErrorPage message="Network error" />);
+        render(
+            <ErrorPage message="Network error"/>,
+        );
         
-        expect(
-            screen.getByRole('heading', {
-                name: 'Something went wrong',
-            }),
-        ).toBeInTheDocument();
+        expect(screen.getByRole('heading', {
+            name: 'Something went wrong',
+        })).toBeInTheDocument();
     });
     
     it('renders error message', () => {
-        render(<ErrorPage message="Network error" />);
+        render(
+            <ErrorPage message="Network error"/>,
+        );
         
-        expect(
-            screen.getByText('Network error'),
-        ).toBeInTheDocument();
+        expect(screen.getByText('Network error')).toBeInTheDocument();
     });
 });

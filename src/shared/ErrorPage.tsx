@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 interface ErrorPageProps {
-    message: string
+    message: string;
 }
 
 export const ErrorPage = ({message}: ErrorPageProps) => (
@@ -20,7 +20,6 @@ export const ErrorPage = ({message}: ErrorPageProps) => (
         <Typography variant="h4" component="h1">
             Something went wrong
         </Typography>
-        
         <Typography variant="body1">
             {message}
         </Typography>

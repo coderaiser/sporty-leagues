@@ -10,6 +10,6 @@ export const Spinner = () => (
             minHeight: '100vh',
         }}
     >
-        <CircularProgress size={48} />
+        <CircularProgress size={48}/>
     </Box>
 );
