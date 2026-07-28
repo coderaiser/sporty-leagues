@@ -5,7 +5,7 @@ import {SearchBar} from './SearchBar';
 const noop = () => {};
 
 describe('SearchBar', () => {
-    it('renders input', () => {
+    it('input is accessible by label Search leagues', () => {
         render(
             <SearchBar
                 value=""
