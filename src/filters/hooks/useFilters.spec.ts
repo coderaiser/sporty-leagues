@@ -38,9 +38,7 @@ describe('useFilters', () => {
             result.current.setSearch('Premier');
         });
         
-        expect(result.current.filteredLeagues).toEqual([
-            leagues[0],
-        ]);
+        expect(result.current.filteredLeagues).toEqual([leagues[0]]);
     });
     
     it('filters by strLeagueAlternate match', () => {
@@ -50,9 +48,7 @@ describe('useFilters', () => {
             result.current.setSearch('EPL');
         });
         
-        expect(result.current.filteredLeagues).toEqual([
-            leagues[0],
-        ]);
+        expect(result.current.filteredLeagues).toEqual([leagues[0]]);
     });
     
     it('filters by sport type', () => {
@@ -62,9 +58,7 @@ describe('useFilters', () => {
             result.current.setSport('Basketball');
         });
         
-        expect(result.current.filteredLeagues).toEqual([
-            leagues[2],
-        ]);
+        expect(result.current.filteredLeagues).toEqual([leagues[2]]);
     });
     
     it('uses AND logic for combined search and sport filters', () => {
@@ -88,9 +82,7 @@ describe('useFilters', () => {
             result.current.setSearch('premier');
         });
         
-        expect(result.current.filteredLeagues).toEqual([
-            leagues[0],
-        ]);
+        expect(result.current.filteredLeagues).toEqual([leagues[0]]);
     });
     
     it('returns empty array when no match exists', () => {
