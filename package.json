@@ -5,8 +5,11 @@
   "type": "module",
   "scripts": {
     "start": "madrun start",
+    "start:dev": "madrun start:dev",
     "start:prod": "madrun start:prod",
     "build": "madrun build",
+    "build:serve": "madrun build:serve",
+    "serve": "madrun serve",
     "report": "madrun report",
     "lint": "madrun lint",
     "fix:lint": "madrun fix:lint",

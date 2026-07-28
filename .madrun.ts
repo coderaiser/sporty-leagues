@@ -6,8 +6,11 @@ const env = {
 
 export default {
     'start': () => 'vite',
-    'start:prod': () => 'serve dist',
+    'start:dev': () => run('start'),
+    'start:prod': () => run('build:serve'),
     'build': () => 'tsc -b && vite build',
+    'build:serve': () => run(['build', 'serve']),
+    'serve': () => 'serve dist',
     'report': async () => [env, await cutEnv('coverage', '--coverage.reporter lcov')],
     'lint': () => 'putout .',
     'fix:lint': () => run('lint', '--fix'),
