@@ -11,6 +11,11 @@ import App from './App';
 
 const noop = () => {};
 
+const getSportDropdownItem = async (text: string) => {
+    await userEvent.setup().click(screen.getByLabelText('Sport'));
+    return screen.getByText(text);
+};
+
 describe('App', () => {
     it('toolbar renders search and sport filter', async () => {
         render(
@@ -33,6 +38,15 @@ describe('App', () => {
             <App/>,
         );
         await waitFor(() => expect(screen.getByText('English Premier League')).toBeInTheDocument());
+    });
+    
+    it('sport filter shows count for a sport', async () => {
+        render(
+            <App/>,
+        );
+        await waitFor(() => screen.getByText('English Premier League'));
+        const item = await getSportDropdownItem('Soccer (2)');
+        expect(item).toBeInTheDocument();
     });
     
     it('shows error page on fetch failure', async () => {

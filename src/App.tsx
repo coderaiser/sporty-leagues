@@ -33,6 +33,10 @@ const App = () => {
     } = useModal();
     
     const sports = [...new Set(leagues.map((l) => l.strSport))].sort();
+    const sportCounts = leagues.reduce<Record<string, number>>((acc, l) => {
+        acc[l.strSport] = (acc[l.strSport] ?? 0) + 1;
+        return acc;
+    }, {});
     const selectedLeague = leagues.find((l) => l.idLeague === selectedId);
     
     if (loading)
@@ -70,7 +74,7 @@ const App = () => {
                 }}
             >
                 <SearchBar value={search} onChange={setSearch}/>
-                <SportFilter sports={sports} value={sport} onChange={setSport}/>
+                <SportFilter sports={sports} value={sport} onChange={setSport} sportCounts={sportCounts}/>
             </Stack>
             <LeagueList leagues={filteredLeagues} onLeagueClick={open}/>
             <BadgeModal

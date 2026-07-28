@@ -4,6 +4,11 @@ import {SportFilter} from './SportFilter';
 
 const noop = () => {};
 
+const sportCounts = {
+    Soccer: 2,
+    Basketball: 1,
+};
+
 describe('SportFilter', () => {
     it('renders All Sports option', async () => {
         const user = userEvent.setup();
@@ -16,6 +21,7 @@ describe('SportFilter', () => {
                 ]}
                 value=""
                 onChange={noop}
+                sportCounts={sportCounts}
             />,
         );
         
@@ -35,12 +41,13 @@ describe('SportFilter', () => {
                 ]}
                 value=""
                 onChange={noop}
+                sportCounts={sportCounts}
             />,
         );
         
         await user.click(screen.getByRole('combobox'));
         
-        expect(screen.getByText('Soccer')).toBeInTheDocument();
+        expect(screen.getByText(/Soccer/)).toBeInTheDocument();
     });
     
     it('calls onChange when sport changes', async () => {
@@ -55,6 +62,7 @@ describe('SportFilter', () => {
                 ]}
                 value=""
                 onChange={onChange}
+                sportCounts={sportCounts}
             />,
         );
         
@@ -62,8 +70,28 @@ describe('SportFilter', () => {
         
         await user.click(select);
         
-        await user.click(screen.getByText('Basketball'));
+        await user.click(screen.getByText('Basketball (1)'));
         
         expect(onChange).toHaveBeenCalledWith('Basketball');
+    });
+    
+    it('renders league count next to sport name', async () => {
+        const user = userEvent.setup();
+        
+        render(
+            <SportFilter
+                sports={[
+                    'Soccer',
+                    'Basketball',
+                ]}
+                value=""
+                onChange={noop}
+                sportCounts={sportCounts}
+            />,
+        );
+        
+        await user.click(screen.getByRole('combobox'));
+        
+        expect(screen.getByText('Soccer (2)')).toBeInTheDocument();
     });
 });

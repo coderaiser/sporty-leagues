@@ -7,9 +7,10 @@ interface SportFilterProps {
     sports: string[];
     value: string;
     onChange: (value: string) => void;
+    sportCounts: Record<string, number>;
 }
 
-export const SportFilter = ({sports, value, onChange}: SportFilterProps) => (
+export const SportFilter = ({sports, value, onChange, sportCounts}: SportFilterProps) => (
     <FormControl size="small" fullWidth>
         <InputLabel id="sport-label">
             Sport
@@ -28,7 +29,7 @@ export const SportFilter = ({sports, value, onChange}: SportFilterProps) => (
                     key={sport}
                     value={sport}
                 >
-                    {sport}
+                    {sport} ({sportCounts[sport]})
                 </MenuItem>
             ))}
         </Select>
