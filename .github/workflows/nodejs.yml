@@ -34,6 +34,8 @@ jobs:
         run: madrun --init
       - name: Lint
         run: redrun fix:lint
+      - name: Build
+        run: redrun build
       - name: Typos
         uses: coderaiser/typos.ai@v1.1.8
         with:
