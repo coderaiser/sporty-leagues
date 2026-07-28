@@ -1,10 +1,10 @@
-import type {Season} from '..//types.ts';
+import type {Season} from '../types.ts';
+import {endpoints} from '../../shared/api/endpoints.ts';
 
 const cache = new Map<string, string | null>();
 
-const URL = `https://www.thesportsdb.com/api/v1/json/3/search_all_seasons.php?badge=1`;
 const buildURL = (id: string) => {
-    return `${URL}&id=${id}`;
+    return `${endpoints.seasons}?badge=1&id=${id}`;
 };
 
 export const clearBadgeCache = () => cache.clear();

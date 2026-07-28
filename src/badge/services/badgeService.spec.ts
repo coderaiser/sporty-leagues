@@ -6,8 +6,7 @@ import {
     selectBadge,
 } from './badgeService.ts';
 import {mockSeasons} from '../../mocks/fixtures.ts';
-
-const URL = 'https://www.thesportsdb.com/api/v1/json/3/search_all_seasons.php';
+import {endpoints} from '../../shared/api/endpoints.ts';
 
 beforeEach(() => clearBadgeCache());
 
@@ -53,13 +52,13 @@ describe('fetchBadge', () => {
     });
     
     it('throws on network error', async () => {
-        server.use(http.get(URL, () => HttpResponse.error()));
+        server.use(http.get(endpoints.seasons, () => HttpResponse.error()));
         
         await expect(fetchBadge('4328')).rejects.toThrow();
     });
     
     it('returns null when seasons is null', async () => {
-        server.use(http.get(URL, () => HttpResponse.json({
+        server.use(http.get(endpoints.seasons, () => HttpResponse.json({
             seasons: null,
         })));
         
