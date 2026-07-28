@@ -32,9 +32,7 @@ describe('useLeagues', () => {
     });
     
     it('sets error on fetch failure', async () => {
-        server.use(
-            http.get(endpoints.leagues, () => HttpResponse.error()),
-        );
+        server.use(http.get(endpoints.leagues, () => HttpResponse.error()));
         
         const {result} = renderHook(() => useLeagues());
         
