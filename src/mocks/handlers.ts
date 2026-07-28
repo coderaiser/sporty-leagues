@@ -6,7 +6,7 @@ export const handlers = [
     http.get(endpoints.leagues, () => HttpResponse.json({
         leagues: mockLeagues,
     })),
-    http.get('https://www.thesportsdb.com/api/v1/json/3/search_all_seasons.php', () => HttpResponse.json({
+    http.get(endpoints.seasons, () => HttpResponse.json({
         seasons: mockSeasons,
     })),
 ];
