@@ -1,10 +1,11 @@
 {
   "name": "sporty-leagues",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "start": "madrun start",
+    "start:prod": "madrun start:prod",
     "build": "madrun build",
     "lint": "madrun lint",
     "fix:lint": "madrun fix:lint",
@@ -43,6 +44,7 @@
     "jsdom": "^30.0.0",
     "madrun": "^13.0.4",
     "msw": "^2.15.0",
+    "serve": "^14.2.6",
     "try-to-catch": "^4.1.0",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.62.0",

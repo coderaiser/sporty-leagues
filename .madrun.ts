@@ -6,6 +6,7 @@ const env = {
 
 export default {
     'start': () => 'vite',
+    'start:prod': () => 'serve dist',
     'build': () => 'tsc -b && vite build',
     'lint': () => 'putout .',
     'fix:lint': () => run('lint', '--fix'),
