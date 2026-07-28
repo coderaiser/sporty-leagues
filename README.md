@@ -34,6 +34,10 @@ bun start:prod
 
 **TDD from the start** : every file has a test written before its implementation. This kept the architecture clean: small components, focused hooks, and no logic in the wrong layer.
 
+**GitHub Actions** to check types, build, tests, coverage, fix lint and typos with AI.
+
+**Deploy to GH Pages** on each created tag.
+
 **MSW** provides a realistic network boundary in tests. Handlers return the same shape as the real API, so tests catch integration issues that unit mocks would miss.
 
 **MUI** was chosen for production-ready accessible components out of the box: Modal, Select, TextField, Grid, the focus stayed on product logic rather than UI primitives.
@@ -55,7 +59,7 @@ const filteredLeagues = filterLeagues(leagues, [
 
 **Domain-driven structure**: code is grouped by what it does, not what type of file it is. `leagues/`, `badge/`, `filters/` each own their types, services, hooks, and components. New domains can be added without touching existing ones.
 
-Implemented with careful planning and implementation with Claude Code.
+Designed with careful planning and implementation with Claude Code.
 
 ## License
 
