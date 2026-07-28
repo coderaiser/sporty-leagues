@@ -10,7 +10,7 @@ interface SportFilterProps {
 }
 
 export const SportFilter = ({sports, value, onChange}: SportFilterProps) => (
-    <FormControl size="small">
+    <FormControl size="small" fullWidth>
         <InputLabel id="sport-label">
             Sport
         </InputLabel>

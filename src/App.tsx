@@ -63,7 +63,7 @@ const App = () => {
                 Sporty Leagues
             </Typography>
             <Stack
-                direction="row"
+                direction={{xs: 'column', sm: 'row'}}
                 spacing={2}
                 sx={{
                     mb: 3,

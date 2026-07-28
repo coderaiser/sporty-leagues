@@ -12,6 +12,14 @@ import App from './App';
 const noop = () => {};
 
 describe('App', () => {
+    it('toolbar renders search and sport filter', async () => {
+        render(
+            <App/>,
+        );
+        await waitFor(() => expect(screen.getByLabelText('Search leagues')).toBeInTheDocument());
+        expect(screen.getByLabelText('Sport')).toBeInTheDocument();
+    });
+    
     it('shows spinner on load', () => {
         server.use(http.get(endpoints.leagues, () => new Promise(noop)));
         render(
@@ -56,3 +64,4 @@ describe('App', () => {
         expect(screen.queryByRole('presentation')).not.toBeInTheDocument();
     });
 });
+
