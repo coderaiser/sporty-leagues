@@ -47,7 +47,9 @@ describe('fetchLeagues', () => {
     });
     
     it('throws when response is not ok', async () => {
-        server.use(http.get(endpoints.leagues, () => new HttpResponse(null, {status: 500})));
+        server.use(http.get(endpoints.leagues, () => new HttpResponse(null, {
+            status: 500,
+        })));
         
         await expect(fetchLeagues()).rejects.toThrow();
     });

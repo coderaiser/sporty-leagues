@@ -69,7 +69,9 @@ describe('fetchBadge', () => {
     });
     
     it('throws when response is not ok', async () => {
-        server.use(http.get(endpoints.seasons, () => new HttpResponse(null, {status: 500})));
+        server.use(http.get(endpoints.seasons, () => new HttpResponse(null, {
+            status: 500,
+        })));
         
         await expect(fetchBadge('4328')).rejects.toThrow();
     });
