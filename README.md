@@ -5,6 +5,20 @@
 [CoverageURL]: https://coveralls.io/github/coderaiser/sporty-legues?branch=master
 [CoverageIMGURL]: https://coveralls.io/repos/coderaiser/sporty-legues/badge.svg?branch=master&service=github
 
+## Install
+
+```sh
+git clone https://github.com/coderaiser/sporty-leagues
+bun install
+bun start:dev
+```
+
+For production version use:
+
+```sh
+bun start:prod
+```
+
 ## License
 
 MIT
