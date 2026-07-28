@@ -1,5 +1,8 @@
 {
-    "plugins": [
+    "rules": {
+        "tape": "off"
+    },
+    "plugins":[
         "react",
         "react-hooks"
     ]
