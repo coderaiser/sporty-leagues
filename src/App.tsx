@@ -80,17 +80,21 @@ const App = () => {
                     mb: 3,
                 }}
             >
-                <Box sx={{
-                    flex: 1,
-                }}>
+                <Box
+                    sx={{
+                        flex: 1,
+                    }}
+                >
                     <SearchBar value={search} onChange={setSearch}/>
                 </Box>
-                <Box sx={{
-                    width: {
-                        xs: '100%',
-                        sm: 200,
-                    },
-                }}>
+                <Box
+                    sx={{
+                        width: {
+                            xs: '100%',
+                            sm: 200,
+                        },
+                    }}
+                >
                     <SportFilter sports={sports} value={sport} onChange={setSport} sportCounts={sportCounts}/>
                 </Box>
                 <ClearFilters visible={isFiltered} onClear={clearFilters}/>
