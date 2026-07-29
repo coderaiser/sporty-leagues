@@ -1,3 +1,8 @@
+2026.07.29, v1.0.3
+
+feature:
+- c8020fb Badges: fetch -> fetchBadges
+
 2026.07.29, v1.0.2
 
 feature:
