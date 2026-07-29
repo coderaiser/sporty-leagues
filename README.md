@@ -1,11 +1,11 @@
-# Sporty leagues [![Build Status][BuildStatusIMGURL]][BuildStatusURL] [![Coverage Status][CoverageIMGURL]][CoverageURL]
+# Sporty Leagues [![Build Status][BuildStatusIMGURL]][BuildStatusURL] [![Coverage Status][CoverageIMGURL]][CoverageURL]
 
 [BuildStatusURL]: https://github.com/coderaiser/sporty-leagues/actions?query=workflow%3A%22Node+CI%22 "Build Status"
 [BuildStatusIMGURL]: https://github.com/coderaiser/sporty-leagues/workflows/Node%20CI/badge.svg
 [CoverageURL]: https://coveralls.io/github/coderaiser/sporty-leagues?branch=master
 [CoverageIMGURL]: https://coveralls.io/repos/coderaiser/sporty-leagues/badge.svg?branch=master&service=github
 
-<img width="1115" height="425" alt="image" src="https://github.com/user-attachments/assets/e5429045-1089-414a-85e9-879ba0ae31ae" />
+<img width="792" height="550" alt="image" src="https://github.com/user-attachments/assets/e46b9477-0f50-456c-a372-8dd3e5f6c24a" />
 
 ## Install
 
