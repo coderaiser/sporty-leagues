@@ -47,13 +47,13 @@ export const BadgeModal = ({id, leagueName, onClose}: BadgeModalProps) => {
         badge,
         loading,
         error,
-        fetch,
+        fetchBadges,
     } = useBadge();
     
     useEffect(() => {
         if (id)
-            fetch(id);
-    }, [id, fetch]);
+            fetchBadges(id);
+    }, [id, fetchBadges]);
     
     return (
         <Modal open={Boolean(id)} onClose={onClose}>

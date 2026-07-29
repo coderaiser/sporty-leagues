@@ -2,7 +2,7 @@ import {renderHook, act} from '@testing-library/react';
 import {http, HttpResponse} from 'msw';
 import {server} from '../../mocks/server';
 import {clearBadgeCache} from '../services/badgeService';
-import {useBadge} from './useBadge';
+import {useBadge, type UseBadgeResult} from './useBadge';
 import {endpoints} from '../../shared/api/endpoints.ts';
 
 beforeEach(() => {
@@ -12,20 +12,21 @@ beforeEach(() => {
 describe('useBadge', () => {
     it('has idle state initially', () => {
         const {result} = renderHook(() => useBadge());
-        
-        expect(result.current).toEqual({
+        const expected: UseBadgeResult = {
             badge: null,
             loading: false,
             error: null,
-            fetch: expect.any(Function),
-        });
+            fetchBadges: expect.any(Function),
+        };
+        
+        expect(result.current).toEqual(expected);
     });
     
     it('sets badge url on successful fetch', async () => {
         const {result} = renderHook(() => useBadge());
         
         await act(async () => {
-            await result.current.fetch('4328');
+            await result.current.fetchBadges('4328');
         });
         
         expect(result.current.badge).toBe('https://example.com/badge.png');
@@ -37,7 +38,7 @@ describe('useBadge', () => {
         const {result} = renderHook(() => useBadge());
         
         await act(async () => {
-            await result.current.fetch('4328');
+            await result.current.fetchBadges('4328');
         });
         
         expect(result.current.error).toBe('Failed to fetch');
@@ -49,8 +50,8 @@ describe('useBadge', () => {
         const {result} = renderHook(() => useBadge());
         
         await act(async () => {
-            await result.current.fetch('4328');
-            await result.current.fetch('4328');
+            await result.current.fetchBadges('4328');
+            await result.current.fetchBadges('4328');
         });
         
         expect(spy).toHaveBeenCalledTimes(1);
@@ -67,7 +68,7 @@ describe('useBadge', () => {
         const {result} = renderHook(() => useBadge());
         
         await act(async () => {
-            await result.current.fetch('4328');
+            await result.current.fetchBadges('4328');
         });
         
         expect(result.current.badge).toBeNull();

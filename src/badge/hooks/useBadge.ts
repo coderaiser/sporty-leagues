@@ -3,11 +3,11 @@ import {tryToCatch} from 'try-to-catch';
 import {fetchBadge} from '../services/badgeService';
 import {parseError} from '../../shared/error.ts';
 
-interface UseBadgeResult {
+export interface UseBadgeResult {
     badge: string | null;
     loading: boolean;
     error: string | null;
-    fetch: (id: string) => Promise<void>;
+    fetchBadges: (id: string) => Promise<void>;
 }
 
 export const useBadge = (): UseBadgeResult => {
@@ -33,6 +33,6 @@ export const useBadge = (): UseBadgeResult => {
         badge,
         loading,
         error,
-        fetch: fetchBadges,
+        fetchBadges,
     };
 };
