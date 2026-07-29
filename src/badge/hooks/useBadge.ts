@@ -15,7 +15,7 @@ export const useBadge = (): UseBadgeResult => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     
-    const fetch = async (id: string) => {
+    const fetchBadges = async (id: string) => {
         setLoading(true);
         setError(null);
         
@@ -33,6 +33,6 @@ export const useBadge = (): UseBadgeResult => {
         badge,
         loading,
         error,
-        fetch,
+        fetch: fetchBadges,
     };
 };
