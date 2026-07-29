@@ -57,7 +57,6 @@ const App = () => {
     return (
         <Box
             sx={{
-                bgcolor: '#121212',
                 minHeight: '100vh',
                 p: 3,
             }}
