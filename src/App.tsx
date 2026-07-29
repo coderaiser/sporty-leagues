@@ -74,7 +74,6 @@ const App = () => {
                 direction={{xs: 'column', sm: 'row'}}
                 spacing={2}
                 sx={{mb: 3}}
-                alignItems={{sm: 'center'}}
             >
                 <Box sx={{flex: 1}}>
                     <SearchBar value={search} onChange={setSearch}/>
