@@ -71,17 +71,17 @@ const App = () => {
                 Sporty Leagues
             </Typography>
             <Stack
-                direction={{
-                    xs: 'column',
-                    sm: 'row',
-                }}
+                direction={{xs: 'column', sm: 'row'}}
                 spacing={2}
-                sx={{
-                    mb: 3,
-                }}
+                sx={{mb: 3}}
+                alignItems={{sm: 'center'}}
             >
-                <SearchBar value={search} onChange={setSearch}/>
-                <SportFilter sports={sports} value={sport} onChange={setSport} sportCounts={sportCounts}/>
+                <Box sx={{flex: 1}}>
+                    <SearchBar value={search} onChange={setSearch}/>
+                </Box>
+                <Box sx={{width: {xs: '100%', sm: 200}}}>
+                    <SportFilter sports={sports} value={sport} onChange={setSport} sportCounts={sportCounts}/>
+                </Box>
                 <ClearFilters visible={isFiltered} onClear={clearFilters}/>
             </Stack>
             <LeagueList leagues={filteredLeagues} onLeagueClick={open}/>
